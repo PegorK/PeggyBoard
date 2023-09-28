@@ -18,12 +18,14 @@ import base64
 
 def clearBoard():
     for x in range(LEDs):
-        ledWall[x] = (0, 0, 0)   
+        ledWall[x] = (0, 0, 0)
+    ledWall.show()
 
 def lightHolds():
     for hold in currentProblem:
         hexColor = int(hold['color'][::-1], 16)
         ledWall[hold['hold']] = hexColor
+    ledWall.show()
 
 try:
     ledCmd = sys.argv[1]
@@ -35,7 +37,7 @@ except:
     quit()
 
 LEDs = 400
-ledWall = neopixel.NeoPixel(board.D18, LEDs)
+ledWall = neopixel.NeoPixel(board.D18, LEDs, auto_write=False)
 
 
 if ledCmd == "CLEAR":
