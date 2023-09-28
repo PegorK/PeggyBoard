@@ -38,7 +38,7 @@ except:
     print("Command error!")
     quit()
 
-LEDs = 12
+LEDs = 400
 ledWall = neopixel.NeoPixel(board.D18, LEDs)
 
 
