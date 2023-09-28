@@ -22,7 +22,7 @@ def clearBoard():
 
 def lightHolds():
     for hold in currentProblem:
-        hexColor = int(hold['color'], 16)
+        hexColor = int(hold['color'][::-1], 16)
         ledWall[hold['hold']] = hexColor
 
 try:
