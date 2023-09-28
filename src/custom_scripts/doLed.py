@@ -23,11 +23,7 @@ def clearBoard():
 def lightHolds():
     for hold in currentProblem:
         hexColor = int(hold['color'], 16)
-        R = (hexColor & 0xFF)
-        G = (hexColor & 0xFF00) >> 8
-        B = (hexColor & 0xFF0000) >> 16
-        ledWall[hold['hold']] = (R, G, B)
-        # print(str(hold['hold']) + ": R(" + str(R) + ")  G(" + str(G) + ") B(" + str(B) + ")")
+        ledWall[hold['hold']] = hexColor
 
 try:
     ledCmd = sys.argv[1]
