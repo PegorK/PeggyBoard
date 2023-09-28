@@ -99,7 +99,7 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
 1)	[Configure Rpi to Kiosk Mode](https://desertbot.io/blog/raspberry-pi-4-touchscreen-kiosk-setup-64-bit-bullseye)
 1)	[Enable Root SSH](https://howtovmlinux.com/articles/rasberry-pi/enable-root-login-and-change-password-raspberrypi/)
 1)	[Install NGINX Webserver (w/ PHP Installation)](https://pimylifeup.com/raspberry-pi-nginx/)
-    1) To restrict the settings page to be only accessed from the control panel the nginx config at `/etc/nginx/sites-enabled/default` was edited and the following was added to the `server` section:
+    1) To restrict the settings page to be only accessed from the control panel the nginx config at `/etc/nginx/sites-enabled/default` was edited and the following was added to the `server` section at the very end:
     ```
         location ^~ /settings {
             allow 127.0.0.1;
