@@ -15,7 +15,7 @@
         case 'saveRoute': saveRoute($parameter); break;
         case 'getRoutes': getRoutes($parameter, $parameters2); break;
         case 'deleteRoute': deleteRoute($parameter); break;
-        case 'updatePeggyBoard': updatePeggyBoard($parameter); break;
+        case 'getVersion': getVersion(); break;
     }
   }
 
@@ -120,7 +120,9 @@
     }
   }
 
-  function updatePeggyBoard($options) {
-
+  function getVersion() {
+    $command = escapeshellcmd('sudo ../custom_scripts/runRoot.sh getVersion');
+    $output = shell_exec($command);
+    echo $output;
   }
 ?>

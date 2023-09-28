@@ -33,6 +33,7 @@ function initPage() {
     loadRoutes();
     initSwipeEvents();
     setScreenSize();
+    getVersion();
 }
 
 function setScreenSize() {
@@ -575,9 +576,22 @@ function sortList(type) {
 
 function openAbout(show) {
     if (show) {
-        $("#aboutPage").show()
+        $("#aboutPage").show();
     } else {
-        $("#aboutPage").hide()
+        $("#aboutPage").hide();
     }
+}
 
+function getVersion() {
+    $.ajax({ url: _mainBackend,
+        data: {function: 'getVersion'},
+        type: 'POST',
+        success: function(output) {
+                    output = output.trim();
+                    $("#versionDiv").html("V: " + output.slice(30,));
+                },
+        error: function (ajaxContext) {
+                console.error("Something went wrong...");
+            },
+    });
 }
