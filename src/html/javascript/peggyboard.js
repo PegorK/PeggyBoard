@@ -588,7 +588,7 @@ function getVersion() {
         type: 'POST',
         success: function(output) {
                     output = output.trim();
-                    $("#versionDiv").html("V: " + output.slice(30,));
+                    $("#versionDiv").html("v:" + output.slice(30,));
                 },
         error: function (ajaxContext) {
                 console.error("Something went wrong...");
