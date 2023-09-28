@@ -1,0 +1,556 @@
+html {
+    font-family: arial, sans-serif;
+    user-select: none;
+    width: 480px;
+    height: 800px;
+    max-width: 480px;
+    max-height: 800px;
+    background-color: black;
+    background: url(/images/background_1_800x480.png) no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    margin: 0px;
+  }
+  
+  input[type='checkbox'] {
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top: 6px;
+  }
+  
+  .buttonOn {
+    width: 65px;
+    height: 55px;
+    background-image: url(/images/button_on_100x50.png);
+    margin: 6px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .buttonOff {
+    width: 65px;
+    height: 55px;
+    background-image: url(/images/button_off_100x50.png);
+    margin: 6px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .closeButton {
+    height: 60px;
+    width: 100px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(88, 196, 88);
+    color: white;
+    margin-left: 190px;
+    font-weight: bold;
+    position: relative;
+    bottom: 115px;
+  }
+  
+  .closeButton:disabled {
+    background: grey;
+  }
+  
+  .buttonContainer {
+    position: relative;
+    top:200px;
+  }
+  
+  .buttonAccept {
+    height: 90px;
+    width: 180px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(88, 196, 88);
+    color: white;
+    margin-left: 149px;
+    font-weight: bold;
+    margin-bottom:50px;
+  }
+  
+  .buttonCancel {
+    height: 90px;
+    width: 180px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(230, 45, 45);
+    color: white;
+    margin-left: 149px;
+    font-weight: bold;
+  }
+  
+  .buttonAccept:active{
+    transform:scale(1.2);
+  }
+  
+  .buttonCancel:active{
+    transform:scale(1.2);
+  }
+  
+  .connectWifiButton {
+    height: 60px;
+    width: 100px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(88, 196, 88);
+    color: white;
+    margin-left: 190px;
+    font-weight: bold;
+  }
+  
+  .connectWifiButton:disabled {
+    background: grey;
+  }
+  
+  .cancelConnectButton {
+    height: 60px;
+    width: 100px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(230, 45, 45);
+    color: white;
+    position: absolute;
+    bottom: 40px;
+    left: 190px;
+  }
+  
+  .connectWifiButton:active {
+    background: lightskyblue;
+  }
+  
+  .connectWifiButton:disabled:active {
+    background: grey;
+  }
+  
+  .networkInfo{
+    height: 15px;
+    font-size: 14px;
+    line-height: 15px;
+    text-align: center;
+  }
+  .networkInfo div {
+    display:inline-block;
+    height: 15px;
+  }
+
+  .routeInfo{
+    height: 15px;
+    font-size: 14px;
+    line-height: 15px;
+  }
+  .routeInfo div {
+    display:inline-block;
+    height: 15px;
+  }
+
+  .deleteRouteButton {
+    height: 60px;
+    width: 100px;
+    border-radius: 15px;
+    border: 0px;
+    background: rgb(255, 0, 0);
+    color: white;
+    margin-left: 190px;
+    font-weight: bold;
+  }
+  
+  
+  @keyframes spin {
+    to {transform:rotate(360deg);}
+  }
+  
+  .loadingSpinner {
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/loading_spinner_200x200.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: spin 800ms linear infinite;
+  }
+  
+  .spinnerBackground {
+    width: 480px;
+    height: 800px;
+    background: rgb(0,0,0,85%);
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  
+  .overlayMsg {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      top: 600px;
+      width: 100%;
+      text-align: center;
+  }
+  
+  .overlayMsgTop {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    top: 120px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .successIcon {
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/success_200x200.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: spin 400ms linear;
+  }
+  
+  .errorIcon {
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/error_200x200.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: spin 400ms linear;
+  }
+  
+  #mainScreen {
+    transform-origin: center top;
+    width: 480px;
+    height: 768px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #statusBar {
+    width: 480px;
+    height:45px;
+    background: linear-gradient(0deg, #a1a1a1, white);
+    max-height:45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 2px;
+    border-bottom: 1px solid black;
+  }
+  
+  .statusBarDate {
+    position: absolute;
+    left: 10px;
+  }
+  
+  .statusBarTime {
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  .statusBarWifiOff {
+    background-image: url(/images/wifi_off_100x100.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height:100%;
+    width: 28px;
+    right: 8px;
+    top: 8px;
+  }
+  
+  .statusBarWifiOn {
+    background-image: url(/images/wifi_on_100x100.png);
+  }
+  
+  .statusBarWifiOffline {
+    background-image: url(/images/wifi_offline_100x100.png);
+  }
+  
+  .settingsPage {
+    display: none;
+    height: 800px;
+    width: 480px;
+    background: white;
+    position:fixed;
+  }
+  
+  .backButton {
+    background-image: url(/images/back_100x100.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    margin: 0px;
+    left: 28px;
+    top: 16px;
+  }
+  
+  .backButton:active {
+    transform: scale(1.2);
+  }
+  
+  .refreshButton {
+    background-image: url(/images/refresh_100x100.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin: 0px;
+    top: 14px;
+    right: 16px;
+  }
+  
+  .refreshButton:active {
+    transform: scale(1.2);
+  }
+  
+  .menuHeader {
+    width: 480px;
+    height: 65px;
+    background: white;
+    border-bottom: 1px solid #333333;
+  }
+  
+  .menuTitle {
+    position: relative;
+    top: 12px;
+    left: 70px;
+    font-size: 38px;
+    color: #333333;
+  }
+  
+  .settingsItem {
+    height: auto;
+    width: 480px;
+    line-height: 65px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    color: #555555;
+  }
+  
+  .settingsItemList {
+    height: 690px;
+    width: 480px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    color: #555555;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  .settingsItemContent {
+    margin-left: 10px;
+    margin-bottom: 25px;
+    line-height: 25px;
+    margin-top: 15px;
+  }
+  
+  .settingsItemTitle {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+  
+  .settingsItemTitle:active {
+    background: lightskyblue;
+  }
+  
+  .settingsItemStatus {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    color: black;
+  }
+  
+  .wifiSignalBase {
+    background-size: 100%;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin-left: 15px;
+    position: relative;
+    top: 3px;
+  }
+  
+  .weakWifiSignal {
+    background-image: url(/images/wifi_weak_100x100.png);
+    background-repeat: no-repeat;
+  }
+  
+  .strongWifiSignal {
+    background-image: url(/images/wifi_strong_100x100.png);
+    background-repeat: no-repeat;
+  }
+  
+  .mediumWifiSignal {
+    background-image: url(/images/wifi_med_100x100.png);
+    background-repeat: no-repeat;
+  }
+  
+  .activeConnection {
+    background: #82f68a;
+  }
+  
+  .networkIssues {
+    background: #fffb00;
+  }
+  
+  .connectionItem {
+    height: 50px;
+    width: 480px;
+    border-bottom: 1px solid #ccc;
+    line-height: 50px;
+    font-size: 20px;
+  }
+  
+  .connectionItem:active {
+    background: lightskyblue;
+  }
+  
+  .connectionName {
+    display: inline-block;
+    padding-left: 10px;
+  }
+  
+  .connectedString {
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+    float: right;
+    position: relative;
+    right: 23px;
+    top: 2px;
+  }
+  
+  #buttonsTable table, tr, td {
+    height: 210px;
+    width: 210px;
+    text-align: center;
+  }
+  
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+    height: 160px;
+    background-repeat: no-repeat;
+    background: linear-gradient(0deg, #343434, #65656b);
+    box-shadow: 0px 0px 5px 2px #121430;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .iconActive {
+    transform: scale(1.2);
+  }
+  
+  .settingsIcon {
+    width: 160px;
+    height: 160px;
+    background-image: url(/images/settings_icon_150x150.png);
+    background-position: center;
+    display: inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .infoIcon {
+    width: 160px;
+    height: 160px;
+    background-image: url(/images/info_icon_150x150.png);
+    background-position: center;
+    display: inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .networkInfoBubble {
+    width: 380px;
+    height: 160px;
+    background: linear-gradient(0deg, #a3a0a0, white);
+    display: inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 12px;
+  }
+
+  .networkInfoHeader {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+
+  .networkInfoDetails {
+    font-weight: bold;
+    font-size: 46px;
+    margin-top: 18px;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
+  }
+  
+  #wifiKeyboard {
+    height: 300px;
+    width: 480px;
+    padding-top: 50px;
+  }
+  
+  @keyframes screenSaverFrames {
+    0% {
+      background-image: url('/images/screen_saver/f_1.jpg');
+      background-position-x: left;
+    }
+    40% {
+      background-image: url('/images/screen_saver/f_2.jpg');
+      background-position:center;
+    }
+    70% {
+      background-image: url('/images/screen_saver/f_3.jpg');
+      background-position-x: right;
+    }
+    100% {
+      background-image: url('/images/screen_saver/f_4.jpg');
+      background-position-x: center;
+    }
+  }
+  
+  #screenSaver {
+    width: 480px;
+    height: 800px;
+    background: black;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+  
+  #screenSaverContent {
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/loading_spinner_200x200.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: screenSaverFrames 60000ms linear infinite;
+    animation-duration: 240s;
+    animation-timing-function: linear;
+  }

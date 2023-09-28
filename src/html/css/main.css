@@ -1,0 +1,637 @@
+
+html, body {
+  font-family: arial, sans-serif;
+  user-select: none;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+#mainScreen {
+  transform-origin: center top;
+  background-color: rgb(10,10,10,0.1);
+}
+
+.versionNumber{
+  position: absolute;
+  top:10px;
+  left:10px;
+  font-size: 10px;
+  color:#888;
+}
+
+.headerArea {
+  width: 100%;
+  height: 75px;
+  background-color: beige;
+  border-bottom: 2px solid brown;
+  position: relative;
+}
+
+.nameArea {
+  font-size: 12px;
+  font-weight: bold;
+  margin:0 auto;
+  text-align: center;
+  background-color:rgb(0,0,255,0.4);
+}
+
+.messageArea {
+  font-size: 12px;
+  font-weight: bold;
+  margin:0 auto;
+  text-align: center;
+  border: 1px solid blue;
+  border-radius: 25px;
+  padding: 2px;
+  background-color: #a9c4ff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:99;
+}
+
+.footerArea {
+  width: 100%;
+  height: 60px;
+  background-color: beige;
+  border-top: 2px solid brown;
+  position: relative;
+  text-align: center;
+}
+
+.logoText {
+  width: 225px;
+  height: 100%;
+  background-image: url('/images/Logo_text.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin:0 auto;
+}
+
+.bottomButtons {
+  width: 100%;
+  height: 25px;
+  padding-top: 5px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 125px;
+  font-size: 14px;
+  bottom: 35px;
+  left: 5px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menuIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background-image: url('/images/menu_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.menuIcn:active {
+  background-image: url('/images/menu_icn_active.png');
+}
+
+.lightIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  background-image: url('/images/light_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.lightIcn:active {
+  background-image: url('/images/light_icn_active.png');
+}
+
+.saveIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background-image: url('/images/save_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.saveIcn:active {
+  background-image: url('/images/save_icn_active.png');
+}
+
+.loadIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background-image: url('/images/load_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.loadIcn:active {
+  background-image: url('/images/load_icn_active.png');
+}
+
+.loadActive {
+  background-image: url('/images/load_icn_active.png');
+}
+
+.clearIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background-image: url('/images/clear_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.clearIcn:active {
+  background-image: url('/images/clear_icn_active.png');
+}
+
+.deleteIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  background-image: url('/images/trash_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.deleteIcn:active {
+  background-image: url('/images/trash_icn_active.png');
+}
+
+.searchIcn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background-image: url('/images/search_icn.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin:0 auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.searchAndSort {
+  padding: 5px;
+  width: 100%;
+  margin: 0 auto;
+  background: #888;
+  position: relative;
+  right: 8px;
+  text-align: center;
+}
+
+.wallLayoutArea {
+  width: 90%;
+  height: 95%;
+  max-width: 90%;
+  max-height: 95%;
+  padding-bottom: 25px;
+  margin: 0 auto;
+}
+
+.wallTable {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-style: hidden;
+  position: relative;
+  margin-top: 10px;
+}
+
+.wallTable tr td {
+  width:13px;
+  max-width: 13px;
+  height:13px;
+  max-height: 13px;
+}
+
+.borderBottomOffset1{
+  border-bottom: 1px solid black;
+}
+
+.borderBottomOffset2{
+  border-bottom: 1px solid grey;
+}
+
+.borderBottomOffsetMiddle{
+  border-bottom: 1px solid red;
+}
+
+.borderSideOffsetMiddle{
+  border-right: 1px solid red;
+}
+
+.borderSideOffset1{
+  border-right: 1px solid black;
+}
+
+.borderSideOffset2{
+  border-right: 1px solid grey;
+}
+
+.wallNumbering {
+  position: relative;
+  left: -14px;
+  bottom: -8px;
+  font-size: 10px;
+}
+
+.wallLettering {
+  position: relative;
+  left: -5px;
+  bottom: -15px;
+  font-size: 10px;
+}
+
+.wallHoldClickable {
+  width: 5px;
+  height: 5px;
+  position: relative;
+  left: -4px;
+  bottom: -8px;
+  box-sizing: border-box;
+}
+
+/* Increase clickable/touch area */
+.wallHoldClickable:after {
+  content:'';
+  position:absolute;
+  top:-10px; bottom:-10px; 
+  left:-10px; right:-10px; 
+}
+
+.wallHoldOffset1 {
+  background-color: #444;
+  border:2px solid #444;   
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  font-size: 10px;
+}
+
+.wallHoldOffset2 {
+  background-color: #333;
+  border:2px solid #333;   
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  font-size: 10px;
+
+}
+
+.footHold {
+  box-shadow: 0 0 0 5px blue;
+}
+
+.handHold {
+  box-shadow: 0 0 0 5px #FF69B4;
+
+}
+
+.startingHand {
+  box-shadow: 0 0 0 5px #66ff00;
+}
+
+.finishingHand {
+  box-shadow: 0 0 0 5px red;
+
+}
+
+.climbsTable {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-style: hidden;
+    position: relative;
+    margin-top: 10px;
+    height:540px;
+    max-height: 540px;
+    overflow-y: scroll;
+}
+  
+.main_wrap {
+  width: 90%;
+  max-width: 900px;
+  border-collapse: collapse;
+  border:1px solid black;
+  padding-top: 5px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.main_wrap:active {
+  background-color: rgb(0,0,255, 0.5);
+}
+
+.climb_selected {
+  background-color: #66ff00; ;
+}
+
+.left_content {
+  display: inline-block;
+  padding-left:5px;
+}
+
+.right_content {
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px;
+  float: right;
+}
+
+.climb_title {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.climb_desc{
+  font-weight: normal;
+  font-size: 8px;
+  color: #444;
+}
+
+.climb_date{
+  font-weight: normal;
+  font-size: 8px;
+  color: #444;
+}
+
+.climb_grade{
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.sort_options {
+  width: 90%;
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding-top: 5px;
+  margin: 0 auto;
+  position: relative;
+  background: #999;
+}
+
+.sort_by_name {
+  display: inline-block;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.sort_by_name:active {
+  color: #66ff00;
+}
+
+.sort_by_grade {
+  display: inline-block;
+  float: right;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.sort_by_grade:active {
+  color: #66ff00;
+}
+
+/* SAVE FORM STYLING */
+.saveFormBg{  
+  display: none;
+  position: fixed;
+  height:100%;
+  width: 100%;
+  background-color: rgb(10,10,10,0.8);
+  z-index: 9;
+}
+
+.saveForm {
+  position: fixed;
+  align-content: center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #f1f1f1;
+}
+
+.saveForm-container-status {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top:0;
+  left:0;
+  z-index:10;
+}
+
+.saveForm-container-status-error{
+  background-image: url('/images/err_icn.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.saveForm-container-status-success{
+  background-image: url('/images/success_icn.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.saveForm-container-status-loading{
+  background-image: url('/images/loading_icn.gif');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Add styles to the form container */
+.saveForm-container {
+  min-width: 250px;
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.saveForm-container input[type=text], .saveForm-container select {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.saveForm-container input[type=text]:focus, .saveForm-container select:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.saveForm-container .btn {
+  background-color: #1e5fec;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.saveForm-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.saveForm-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* UPDATE FORM STYLING */
+.updateFormBg{
+  position: fixed;
+  height:100%;
+  width: 100%;
+  background-color: rgb(10,10,10,0.8);
+  z-index: 9;
+}
+
+.updateForm {
+  position: fixed;
+  align-content: center;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #f1f1f1;
+}
+
+.updateForm-container-status {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top:0;
+  left:0;
+  z-index:10;
+}
+
+.updateForm-container-status-error{
+  background-image: url('/images/err_icn.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.updateForm-container-status-success{
+  background-image: url('/images/success_icn.png');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.updateForm-container-status-loading{
+  background-image: url('/images/loading_icn.gif');
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Add styles to the form container */
+.updateForm-container {
+  min-width: 250px;
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.updateForm-container input[type=text], .updateForm-container input[type=password] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.updateForm-container input[type=text]:focus, .updateForm-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.updateForm-container .btn {
+  background-color: #1e5fec;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.updateForm-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.updateForm-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}

@@ -1,0 +1,41 @@
+.peyBoard {
+    min-height: 50px;
+    min-width: 160px;
+    user-select: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.keyboardRow {
+    text-align: center;
+}
+
+.keyboardKey {
+    display: inline-block;
+    min-width: 15px;
+    min-height: 20px;
+    text-align: center;
+    margin: 2px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    background: #eeeeee;
+}
+
+.keyboardKey:active {
+    background-color: rgb(147, 203, 255);
+}
+
+.shiftKeyActive {
+    background: #82f68a;
+    font-weight: bold;
+}
+
+.shiftKeyInactive {
+    background: #c2e0ff;
+    font-weight: bold;
+}
+
+.deleteKey {
+    background: #ff7676;;
+    font-weight: bold;
+}
