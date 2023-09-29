@@ -39,6 +39,8 @@ except:
 LEDs = 400
 ledWall = neopixel.NeoPixel(board.D18, LEDs, auto_write=False)
 
+# Try this:
+# ledWall = neopixel.NeoPixel(board.D18, LEDs, auto_write=False, pixel_order=neopixel.RGB)
 
 if ledCmd == "CLEAR":
     clearBoard()
