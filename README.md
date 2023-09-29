@@ -177,7 +177,7 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
 
 ## Hardware
 ### Parts
-* [Raspberry Pi 3B+](https://www.raspberrypi.com/products/raspberry-pi-1-model-b-plus/)
+* [Raspberry Pi 3B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) (Reccommend 3B+ or newer to avoid 5Ghz WIFI issues)
 * [SD Card 64gb](https://a.co/d/9vveZ4f)
 * [3.3V to 5V Level Shift (for LEDs)](https://www.amazon.com/HiLetgo-Channels-Converter-Bi-Directional-3-3V-5V/dp/B07F7W91LC)
 * [5V 30A Power Supply](https://a.co/d/6RfqMce)

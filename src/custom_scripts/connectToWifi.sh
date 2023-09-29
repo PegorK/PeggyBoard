@@ -7,6 +7,10 @@
 # Notes:  This script is called from runRoot.sh when a user trys to configure a wifi connection.
 #==========================================
 
+# This frequency list and it's respective assignment below shouldn't
+# be necessary for new RPi models.
+freqList="2412 2417 2422 2427 2432 2437 2442 2447 2452 2457 2462"
+
 killall wpa_supplicant  > /dev/null 2>&1
 
 sleep 1
@@ -19,6 +23,7 @@ sudo echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev"  >> /etc/wpa
 sudo echo "network={"                                                >> /etc/wpa_supplicant/wpa_supplicant.conf
 sudo echo "        ssid=\"$1\""                                      >> /etc/wpa_supplicant/wpa_supplicant.conf
 sudo echo "        bssid="$2""                                       >> /etc/wpa_supplicant/wpa_supplicant.conf
+sudo echo "        freq_list="$freqList""                            >> /etc/wpa_supplicant/wpa_supplicant.conf
 sudo echo "        psk=\"$3\""                                       >> /etc/wpa_supplicant/wpa_supplicant.conf
 sudo echo "        key_mgmt=WPA-PSK"                                 >> /etc/wpa_supplicant/wpa_supplicant.conf
 sudo echo "}"                                                        >> /etc/wpa_supplicant/wpa_supplicant.conf
