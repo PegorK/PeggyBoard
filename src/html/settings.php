@@ -39,6 +39,9 @@
       <div class="settingsItem" onclick="openSettings('reboot')">
         <div class="settingsItemTitle">Reboot</div>
       </div>
+      <div class="settingsItem" onclick="openSettings('shutdown')">
+        <div class="settingsItemTitle">Shutdown</div>
+      </div>
     </div>
     <div id="wifiSettingsPage" class="settingsPage">
       <div class="menuHeader">
@@ -144,6 +147,13 @@
           <button type="button" class="buttonCancel" onclick="systemReboot(false)" >CANCEL</button>
       </div>
     </div>
+    <div id="shutdownAlert" class="spinnerBackground">
+      <div class="overlayMsgTop">Are you sure you would like to shutdown the system?</div>
+      <div class="buttonContainer">
+          <button type="button" class="buttonAccept" onclick="systemShutdown(true)" >YES</button>
+          <button type="button" class="buttonCancel" onclick="systemShutdown(false)" >CANCEL</button>
+      </div>
+    </div>
     <div id="deleteAlert" class="spinnerBackground">
       <div class="overlayMsgTop">Are you sure you would like to delete this route?</div>
       <div class="buttonContainer">
@@ -183,5 +193,5 @@
   </body>
 </html>
 <script src="javascript/peyBoard_alpha.js?v=1" type="text/javascript"></script>
-<script src="javascript/settings.js?v=2" type="text/javascript"></script>
+<script src="javascript/settings.js?v=3" type="text/javascript"></script>
 

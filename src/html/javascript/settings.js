@@ -181,6 +181,9 @@ function openSettings(page) {
         case 'reboot':
             $("#rebootAlert").show();
         break;
+        case 'shutdown':
+            $("#shutdownAlert").show();
+        break;
         case 'main':
         default:
             $("#mainSettingsPage").show('slide', {direction: 'down'});
@@ -231,6 +234,25 @@ function systemReboot(reboot) {
                     },
             error: function (ajaxContext) {
                     console.error("Something bad happened")
+                    $("#loadingSpinner").hide();
+                },
+        });
+    }
+}
+
+function systemShutdown(shutdown) {
+    $("#shutdownAlert").hide();
+    if (shutdown) {
+        $("#loadingSpinner").show();
+        $.ajax({ url: _settingsBackend,
+            data: {function: 'systemShutdown'},
+            type: 'POST',
+            success: function(output) {
+                        console.log("Goodbye!");
+                    },
+            error: function (ajaxContext) {
+                    console.error("Something bad happened")
+                    $("#loadingSpinner").hide();
                 },
         });
     }

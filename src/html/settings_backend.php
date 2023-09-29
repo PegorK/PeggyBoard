@@ -25,6 +25,7 @@
         case 'getCurrentIp': getCurrentIp(); break;
         case 'checkOnline': checkOnline(); break;
         case 'systemReboot': systemReboot(); break;
+        case 'systemShutdown': systemShutdown(); break;
     }
   }
 
@@ -78,6 +79,11 @@
 
   function systemReboot() {
     system("sudo ../custom_scripts/runRoot.sh systemReboot");
+    echo "Done";
+  }
+
+  function systemShutdown() {
+    system("sudo ../custom_scripts/runRoot.sh systemShutdown");
     echo "Done";
   }
 ?>

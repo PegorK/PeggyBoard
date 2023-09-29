@@ -42,6 +42,9 @@ case $1 in
   systemReboot)
     shutdown -r now
     ;;
+  systemShutdown)
+    shutdown -h now
+    ;;
   *)
     echo -n "error: command not found"
     ;;
