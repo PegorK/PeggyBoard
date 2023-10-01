@@ -3,13 +3,18 @@
 </div>
 <br>
 
+<div align="center">
+  <img src="images/pb_cover.png" alt="CoverRender" width="950px"/>
+</div>
+<br>
+
 Close your eyes and take a deep breath. It's January 2020. You think to yourself this is going to be a great year for climbing. You've been climbing hard lately, pushing grades, training hard, and almost flashing the pink one in the corner, nothing can stop you. A couple months go by and your goals for the year are well defined, but you keep hearing talks of some novel virus. You brush it off.
 
 It's now March. Looking at your phone the only headlines you see are about COVID-19. It's spreading quick. There are talks of quarantine measures to be put in place, social distancing, and the closure of public places. As you scroll through this you notice an email from your over-charging perfectly average climbing gym. They're closing their doors until further notice, but they're gladly still accepting your membership fees. Your climbing plans crumble like the choss in New Jack City, but you realize you have to stay in shape somehow. Like everyone else and their grandmother you begin to build a [woody](https://gearjunkie.com/featured/todd-skinner-climbing-woody) and so the PeggyBoard was born.
 
 So what is the PeggyBoard?
 - It's a Raspberry Pi project developed to be paired with your home "woody"/climbing wall. It features an easy to use webapp that anyone on your network can open up and begin setting a custom route that will then light up the respective holds on your wall. These routes can also be saved so they can be revisited later.
-- It was originally developed for my climbing partner, Liam, for his home wall during the pandemic. He was putting together a 45° (ouch) wall and wanted to make it more fun/interactive. 
+- It was originally developed for my climbing partner, Liam, for his home wall during the pandemic. He was putting together a 12ft 45° (ouch) wall and wanted to make it more fun/interactive. 
 
 Why not just get a [MoonBoard](https://www.moonboard.com/)?
 - The MoonBoard is an awesome product, but at the time their supplies were very low (since everyone was building one) and ~$700 on just the LED System alone ain't cheap.
@@ -48,11 +53,12 @@ When accessing the app through a mobile device the user is presented with the ro
   <br><b>Figure 4.</b> Alternating through holds.
 </div>
 
-The user can also view previously saved routes by clicking the folder icon or save their current route by clicking the save icon. When the user is ready to climb one of the routes they can press the light bulb icon and it will then light up the respective holds on the wall.
+
+The user can also view previously saved routes by clicking the folder icon or save their current route by clicking the save icon. When the user is ready to climb one of the routes they can press the light bulb icon and it will then light up the respective holds on the wall as seen in Figure 5.
 
 <div align="center">
-  <img src="images/pb_lightup" alt="PeggyBoard displaying a route" width="400px"/>
-  <br><b>Figure 4.</b> Alternating through holds.
+  <img src="images/pb_wall.jpg" alt="PeggyBoard displaying a route" width="600px"/>
+  <br><b>Figure 5.</b> PeggyBoard displaying a route.
 </div>
 
 
@@ -65,25 +71,25 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
             <td>
                 <div align="center">
                     <img src="images/pb_setup.png" alt="PeggBoard Settings UI" width="300"/>
-                    <br><b>Figure 5.</b> Control panel main screen.
+                    <br><b>Figure 6.</b> Control panel main screen.
                 </div>
             </td>
             <td>
                 <div align="center">
                     <img src="images/pb_settings.png" alt="Settings Menu" width="300"/>
-                    <br><b>Figure 6.</b> Settings page.
+                    <br><b>Figure 7.</b> Settings page.
                 </div>
             </td>
             <td>
                 <div align="center">
                     <img src="images/pb_wifi.png" alt="WiFi List" width="300"/>
-                    <br><b>Figure 7.</b> WiFi list.
+                    <br><b>Figure 8.</b> WiFi list.
                 </div>
             </td>
             <td>
                 <div align="center">
                     <img src="images/pb_login.png" alt="WiFi Login" width="300"/>
-                    <br><b>Figure 8.</b> WiFi login.
+                    <br><b>Figure 9.</b> WiFi login.
                 </div>
             </td>
         </tr>
@@ -168,9 +174,10 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
         cd $HOME && touch .hushlogin
         ```
 
-1)  Copy over the folders in the `Software` folder (`custom_scripts`, `html`) onto the Raspberry Pi, placing them in `/var/www/`
+1)  Clone the repo to the base directory of the Raspberry Pi and copy the folders in the `Software` folder (`custom_scripts`, `html`) to `/var/www/`. 
+    *  \**If the repo is cloned to a different location be sure to update `updateScript.sh`.*
 1)	[Give root privilege to custom script `runRoot.sh`](https://superuser.com/questions/1448987/allow-php-to-run-shell-script-with-sudo-permission)
-1)  Make `runRoot.sh` and `connectToWifi.sh` into executables:
+1)  Make `runRoot.sh`, `connectToWifi.sh`, and `updateScript.sh` into executables:
     ```
     chmod +x runRoot.sh && chmod +x connectToWifi.sh
     ```
@@ -188,8 +195,9 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
 * [Case (Project box would be better)](https://a.co/d/aq2SHM4)
 * [Touchscreen](https://www.aliexpress.us/item/3256804013190983.html?gatewayAdapt=glo2usa4itemAdapt)
 
+<p>
+The control panel for the PeggyBoard was housed inside of a fireproof safe. Looking back it would have been way easier dealing with a project box of similar size. The panel contains the Raspberry Pi, power supply, 3.3V to 5V level shifter, two terminal blocks, 3 2-pin connectors, 3-pin connector, and a touchscreen. It looks like a rats nest but it's a rather simple setup. The schematic in Figure 10 is a simplified version of the finished product seen in Figure 10. The use of a 3v3 to 5v level shifter was necessary since the Raspberry Pi handles logic in 3v3, but the addressable LEDs expect 5V. The reason behind the 3 2-Pin connectors is due to voltage drop across the LEDs. Powering 400 LEDs from a single terminal is a bad idea. Not only will that terminal get extremely hot (even melt wires if too low gauge) it would also show a visible color change in LEDs the further out they are. To avoid this the 400 LED strip was split into 4 sections where each section ran a separate 5v and GND connection, but maintained the same signal line from the previous section as seen in Figure 12.
 
-The control panel for the PeggyBoard was housed inside of a fireproof safe. Looking back it would have been way easier dealing with a project box of similar size. The panel contains the Raspberry Pi, power supply, 3.3V to 5V level shifter, two terminal blocks, 3 2-pin connectors, 3-pin connector, and a touchscreen. It looks like a rats nest but it's a rather simple setup. The schematic in Figure 9 is a simplified version of the finished product seen in Figure 10. The use of a 3v3 to 5v level shifter was necessary since the Raspberry Pi handles logic in 3v3, but the addressable LEDs expect 5V. The reason behind the 3 2-Pin connectors is due to voltage drop across the LEDs. Powering 400 LEDs from a single terminal is a bad idea. Not only will that terminal get extremely hot (even melt wires if too low gauge) it would also show a visible color change in LEDs the further out they are. To avoid this the 400 LED strip was split into 4 sections where each section ran a separate 5v and GND connection, but maintained the same signal line from the previous section as seen in Figure 11. 
 
 
 
@@ -199,13 +207,13 @@ The control panel for the PeggyBoard was housed inside of a fireproof safe. Look
             <td>
                 <div align="center">
                     <img src="images/pb_schematic.png" alt="PeggBoard Schematic" width="400"/>
-                    <br><b>Figure 9.</b> Control panel schematic.
+                    <br><b>Figure 10.</b> Control panel schematic.
                 </div>
             </td>
             <td>
                 <div align="center">
                     <img src="images/pb_panel.png" alt="PeggyBoard Control Panel" width="400"/>
-                    <br><b>Figure 10.</b> Control Panel.
+                    <br><b>Figure 11.</b> Control Panel.
                 </div>
             </td>
         </tr>
@@ -214,10 +222,16 @@ The control panel for the PeggyBoard was housed inside of a fireproof safe. Look
 
 <div align="center">
   <img src="images/pb_leds.png" alt="LED Connection" width="400px"/>
-  <br><b>Figure 11.</b> LED strip connections..
+  <br><b>Figure 12.</b> LED strip connections.
 </div>
-
-
+<div align="center">
+  <img src="images/pb_lights.jpg" alt="LED bulbs" width="700px"/>
+  <br><b>Figure 13.</b> LED bulbs on the back of the wall.
+</div>
+<div align="center">
+  <img src="images/pb_panelmount.jpg" alt="Mounted control panel" width="700px"/>
+  <br><b>Figure 14.</b> The PeggyBoard control panel.
+</div>
 
 
 
