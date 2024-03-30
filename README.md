@@ -134,8 +134,7 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
         ````
     1)  Verify you have created the table properly. If you run the command `DESCRIBE routes` you should see a table like so:
         <div align="center">
-            <img src="images/db_layout.png" alt="WiFi Login" width="700"/>
-            <br><b>Figure 9.</b> WiFi login.
+            <img src="images/db_layout.png" alt="Database layout" width="700"/>
         </div>
     1)  Exit mysql: `exit`
     
