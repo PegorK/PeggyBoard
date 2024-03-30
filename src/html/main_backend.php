@@ -34,7 +34,7 @@
 
   function saveRoute($options){
     // build the sql request
-    if(strlen($options[name])>24 || strlen($options[author])>24) {
+    if(strlen($options['name'])>24 || strlen($options['author'])>24) {
       echo json_encode("Error: input too big.");
       echo json_encode(-1);
       return false;
@@ -50,6 +50,8 @@
         echo json_encode(-1);
       }
       $db->close();
+    } else {
+      echo ("ERROR: Could not open database!");
     }
   }
 
@@ -89,17 +91,20 @@
       $sql = "SELECT id, routename, grade, author, date, holds FROM routes ORDER BY $sortType $sortOrd";
       $res = $db->query($sql);
       while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-          $jsonObj->id = $row[id];
-          $jsonObj->name = $row[routename];
-          $jsonObj->grade = $row[grade];
-          $jsonObj->author = $row[author];
-          $jsonObj->date = $row[date];
-          $jsonObj->holds = $row[holds];
+          $jsonObj = new stdClass();//create a new 
+          $jsonObj->id = $row['id'];
+          $jsonObj->name = $row['routename'];
+          $jsonObj->grade = $row['grade'];
+          $jsonObj->author = $row['author'];
+          $jsonObj->date = $row['date'];
+          $jsonObj->holds = $row['holds'];
 
           $climbs[$i] = json_encode($jsonObj);
           $i++;
       }
-      echo json_encode($climbs);
+      if (is_null($climbs) == false) {
+        echo json_encode($climbs);
+      }
       $db->close();
     } else {
       echo ("ERROR: Could not retrieve climbs!");

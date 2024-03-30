@@ -112,8 +112,34 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
             deny all;
         }
     ```
-1)  [Setup a MYSQL Database](https://pimylifeup.com/raspberry-pi-mysql/)
-    <br>**NOTE** - Make sure you update the function `openDatabase()` in `main_backend.php` to the credentials and database name you choose here or match what's already there. Also create a table named `routes`.
+1)  [Setup a MYSQL Database](https://pimylifeup.com/raspberry-pi-mysql/) (name the database 'peggyboardDB' and add a user 'master' with password 'climbhard'). After you have setup the database you will need to create a table named `routes` with a couple fields. You can use the following commands.
+    1)  Launch mysql with the created user `master`:
+        ```
+        mysql -u master -p
+        ```
+    1)  Switch to use the `peggyboardDB`:
+        ```
+        use peggyboardDB
+        ```
+    1)  Create a table named `routes` with the required fields:
+        ```
+        CREATE TABLE routes (
+            id INT(10) unsigned NOT NULL AUTO_INCREMENT,
+            routename VARCHAR(30) NOT NULL,
+            grade INT(11) unsigned NOT NULL,
+            author VARCHAR(30) NOT NULL,
+            date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            holds MEDIUMTEXT NOT NULL,
+            primary key (id));
+        ````
+    1)  Verify you have created the table properly. If you run the command `DESCRIBE routes` you should see a table like so:
+        <div align="center">
+            <img src="images/db_layout.png" alt="WiFi Login" width="700"/>
+            <br><b>Figure 9.</b> WiFi login.
+        </div>
+    1)  Exit mysql: `exit`
+    
+    <br>**NOTE** - IF YOU CHOSE A DIFFERENT DB NAME AND USER MAKSE SURE YOU UPDATE THE FUNCTION `openDatabase()` in `main_backend.php` to the credentials and database name.
 
 1)	[Rotate LCD (optional)](https://osoyoo.com/2019/09/20/instruction-for-raspberry-pi-5-dsi-touch-screen/)
 1)	[Enable GPIOs](https://pimylifeup.com/raspberry-pi-gpio/)
