@@ -200,7 +200,10 @@ Initially the PeggyBoard only featured a web app and had no way of configuring t
         ```
 
 1)  Clone the repo to the base directory of the Raspberry Pi and copy the folders in the `Software` folder (`custom_scripts`, `html`) to `/var/www/`. 
+    * It is important that the original directory of the cloned repo lives in `/home/pi/PeggyBoard`
     *  \**If the repo is cloned to a different location be sure to update `updateScript.sh`.*
+    * You might need to add an exception for this directory so some git calls for update and versioning work: 
+        ` git config --global --add safe.directory /home/pi/PeggyBoard `
 1)	[Give root privilege to custom script `runRoot.sh`](https://superuser.com/questions/1448987/allow-php-to-run-shell-script-with-sudo-permission)
 1)  Make `runRoot.sh`, `connectToWifi.sh`, and `updateScript.sh` into executables:
     ```
