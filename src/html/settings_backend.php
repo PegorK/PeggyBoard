@@ -17,7 +17,6 @@
     }
     switch($function) {
         case 'updateSystem': updateSystem(); break;
-        case 'getVersion': getVersion(); break;
         case 'getAvailableWifi': getAvailableWifi();break;
         case 'refreshAvailableWifi': refreshAvailableWifi();break;
         case 'connectToWifi': connectToWifi($parameter);break;
@@ -31,12 +30,6 @@
 
   function updateSystem() {
     $command = escapeshellcmd('sudo ../custom_scripts/runRoot.sh doUpdate');
-    $output = shell_exec($command);
-    echo $output;
-  }
-
-  function getVersion() {
-    $command = escapeshellcmd('sudo ../custom_scripts/runRoot.sh getVersion');
     $output = shell_exec($command);
     echo $output;
   }

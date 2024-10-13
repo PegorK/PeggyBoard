@@ -43,15 +43,15 @@
     $sql = "INSERT INTO `routes` (`routename`, `grade`, `author`, `holds`) VALUES ('$options[name]', '$options[grade]', '$options[author]', '$options[problem]')";
     // send the sql request
     $db = openDatabase();
-    if ($db != 0) {
+    if ($db ->connect_error) {
+      echo ("ERROR: Could not open database!");
+    } else {
       if ($db->query($sql) === TRUE) {
         echo json_encode($db->insert_id);
       } else {
         echo json_encode(-1);
       }
       $db->close();
-    } else {
-      echo ("ERROR: Could not open database!");
     }
   }
 
@@ -64,12 +64,7 @@
     $dbname = "peggyboardDB";
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-      return 0;
-    } else {
-      return $conn;
-    }
+    return $conn;
   }
 
   function getRoutes($sortType = "GRADE", $sortOrd = "ASC") {
@@ -86,7 +81,9 @@
     }
 
     $db = openDatabase();
-    if($db != 0) {
+    if ($db ->connect_error) {
+      echo ("ERROR: Could not open database!");
+    } else {
       $i = 0;
       $sql = "SELECT id, routename, grade, author, date, holds FROM routes ORDER BY $sortType $sortOrd";
       $res = $db->query($sql);
@@ -115,7 +112,9 @@
     $sql = "DELETE FROM `routes` WHERE id=$routeId";
     // send the sql request
     $db = openDatabase();
-    if ($db != 0) {
+    if ($db ->connect_error) {
+      echo ("ERROR: Could not open database!");
+    } else {
       if ($db->query($sql) === TRUE) {
         echo json_encode("True");
       } else {
