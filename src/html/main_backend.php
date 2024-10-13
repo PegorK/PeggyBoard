@@ -103,8 +103,6 @@
         echo json_encode($climbs);
       }
       $db->close();
-    } else {
-      echo ("ERROR: Could not retrieve climbs!");
     }
   }
 
