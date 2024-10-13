@@ -530,7 +530,7 @@ function checkUpdates() {
 }
 
 function getVersion() {
-    $.ajax({ url: _settingsBackend,
+    $.ajax({ url: _mainBackend,
         data: {function: 'getVersion'},
         type: 'POST',
         success: function(output) {
