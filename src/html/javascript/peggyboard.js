@@ -32,36 +32,7 @@ function initPage() {
     generateWallLayout();
     loadRoutes();
     initSwipeEvents();
-    setScreenSize();
     getVersion();
-}
-
-function setScreenSize() {
-    _screenSize.width = $(window).width();
-    _screenSize.height = $(window).height();
-
-    var footerTop = $("#footerArea").offset().top;
-    var footerHeight = $("#footerArea").height();
-    var footerBottom = footerTop + footerHeight;
-    var scale = 1;
-    var increment = 0.01;
-    if (footerBottom > _screenSize.height) {
-        while ((footerBottom - 40) >= _screenSize.height) {
-            footerTop = $("#footerArea").offset().top;
-            footerHeight = $("#footerArea").height();
-            footerBottom = footerTop + footerHeight;
-            scale = scale - increment;
-            $("#mainScreen").css("transform", "scale(" + scale + ")");
-        }
-    } else if (footerBottom < _screenSize.height) {
-        while ((footerBottom + 40) <= _screenSize.height) {
-            footerTop = $("#footerArea").offset().top;
-            footerHeight = $("#footerArea").height();
-            footerBottom = footerTop + footerHeight;
-            scale = scale + increment;
-            $("#mainScreen").css("transform", "scale(" + scale + ")");
-        }
-    }
 }
 
 function initSwipeEvents() {
