@@ -423,6 +423,9 @@ function getRoutes(sortType, sortOrder) {
 
             createDatabaseList(_routeDatabase);
         },
+        error: function (ajaxContext) {
+            createDatabaseList(_routeDatabase);
+        },
         dataType: 'json'
     });
 }
@@ -535,7 +538,7 @@ function getVersion() {
         type: 'POST',
         success: function(output) {
                     output = output.trim();
-                    $("#versionSpan").html("Version: " + output.slice(30,));
+                    $("#versionSpan").html("Version: " + output.slice(0,7));
                 },
         error: function (ajaxContext) {
                 console.error("Something went wrong...");
