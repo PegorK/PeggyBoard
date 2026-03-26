@@ -423,6 +423,9 @@ function getRoutes(sortType, sortOrder) {
 
             createDatabaseList(_routeDatabase);
         },
+        error: function (ajaxContext) {
+            createDatabaseList(_routeDatabase);
+        },
         dataType: 'json'
     });
 }
